@@ -1,6 +1,10 @@
 package com.example.market.persistence.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity

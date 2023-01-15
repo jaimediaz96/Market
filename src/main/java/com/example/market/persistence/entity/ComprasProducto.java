@@ -1,6 +1,10 @@
 package com.example.market.persistence.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.EmbeddedId;
 
 @Entity
 @Table(name = "compras_productos")
