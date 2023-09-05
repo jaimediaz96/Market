@@ -37,6 +37,14 @@ public class ProductoRepositry implements ProductRepository {
         return productos.map(mapper::toProducts); //prod -> mapper.toProducts(prod)
     }
 
+    public Optional<List<Producto>> getProductoByPrecioVentaLessThanPriceAndByCategory (double precioVenta, int idCategoria) {
+        return productoCrudRepository.findByPrecioVentaLessThanAndIdCategoriaOrderByNombreAsc(precioVenta, idCategoria);
+    }
+
+    public Optional<List<Producto>>  getNombresStartingWith(String lettres){
+        return productoCrudRepository.findByNombreStartingWithAndEstado(lettres, true);
+    }
+
     @Override
     public Optional<Product> getProduct(int productId) {
         return productoCrudRepository.findById(productId).map(producto -> mapper.toProduct(producto));

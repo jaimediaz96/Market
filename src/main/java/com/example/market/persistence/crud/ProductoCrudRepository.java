@@ -13,6 +13,10 @@ public interface ProductoCrudRepository extends CrudRepository<Producto, Integer
 
     Optional<List<Producto>> findByCantidadStockLessThanAndEstado(int cantidadStock, boolean estado);
 
+    Optional<List<Producto>> findByPrecioVentaLessThanAndIdCategoriaOrderByNombreAsc(double precioVenta, int idCategoria);
+
+    Optional<List<Producto>> findByNombreStartingWithAndEstado(String lettres, boolean estado);
+
     /*
     @Query(value = "SELECT * FROM producto WHERE id_categoria = ?", nativeQuery = true)
     List<Producto> getByCategoria(int idCategoria); //toca poner toda la sentencia SQL
