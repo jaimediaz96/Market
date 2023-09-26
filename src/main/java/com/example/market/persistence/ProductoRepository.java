@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ProductoRepositry implements ProductRepository {
+public class ProductoRepository implements ProductRepository {
     @Autowired
     private ProductoCrudRepository productoCrudRepository;
 
@@ -34,15 +34,7 @@ public class ProductoRepositry implements ProductRepository {
     @Override
     public Optional<List<Product>> getScarseProduct(int quantity) {
         Optional<List<Producto>> productos = productoCrudRepository.findByCantidadStockLessThanAndEstado(quantity, true);
-        return productos.map(mapper::toProducts); //prod -> mapper.toProducts(prod)
-    }
-
-    public Optional<List<Producto>> getProductoByPrecioVentaLessThanPriceAndByCategory (double precioVenta, int idCategoria) {
-        return productoCrudRepository.findByPrecioVentaLessThanAndIdCategoriaOrderByNombreAsc(precioVenta, idCategoria);
-    }
-
-    public Optional<List<Producto>>  getNombresStartingWith(String lettres){
-        return productoCrudRepository.findByNombreStartingWithAndEstado(lettres, true);
+        return productos.map(prods -> mapper.toProducts(prods));
     }
 
     @Override
@@ -52,7 +44,8 @@ public class ProductoRepositry implements ProductRepository {
 
     @Override
     public Product save(Product product) {
-        return mapper.toProduct(productoCrudRepository.save(mapper.toProducto(product)));
+        Producto producto = mapper.toProducto(product);
+        return mapper.toProduct(productoCrudRepository.save(producto));
     }
 
     @Override

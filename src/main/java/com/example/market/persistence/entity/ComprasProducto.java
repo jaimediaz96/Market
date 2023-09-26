@@ -1,23 +1,15 @@
 package com.example.market.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.MapsId;
-import javax.persistence.Table;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
-import javax.persistence.EmbeddedId;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "compras_productos")
 public class ComprasProducto {
-
     @EmbeddedId
     private ComprasProductoPK id;
 
     private Integer cantidad;
-
     private Double total;
-
     private Boolean estado;
 
     @ManyToOne

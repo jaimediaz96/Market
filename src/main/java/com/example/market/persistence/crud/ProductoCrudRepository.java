@@ -1,28 +1,12 @@
 package com.example.market.persistence.crud;
 
 import com.example.market.persistence.entity.Producto;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ProductoCrudRepository extends CrudRepository<Producto, Integer> {
-
-    List<Producto> findByIdCategoriaOrderByNombreAsc(int idCategoria); // ordenados acendente
-
+    List<Producto> findByIdCategoriaOrderByNombreAsc(int idCategoria);
     Optional<List<Producto>> findByCantidadStockLessThanAndEstado(int cantidadStock, boolean estado);
-
-    Optional<List<Producto>> findByPrecioVentaLessThanAndIdCategoriaOrderByNombreAsc(double precioVenta, int idCategoria);
-
-    Optional<List<Producto>> findByNombreStartingWithAndEstado(String lettres, boolean estado);
-
-    /*
-    @Query(value = "SELECT * FROM producto WHERE id_categoria = ?", nativeQuery = true)
-    List<Producto> getByCategoria(int idCategoria); //toca poner toda la sentencia SQL
-
-    List<Producto> findByIdCategoria(int idCategoria); //query methods es mejor
-
-    List<Producto> findByIdCategoriaOrderByDes(int idCategoria); // orden desendente
-    */
 }

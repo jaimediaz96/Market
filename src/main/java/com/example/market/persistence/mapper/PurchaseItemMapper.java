@@ -9,10 +9,10 @@ import org.mapstruct.Mappings;
 
 @Mapper(componentModel = "spring")
 public interface PurchaseItemMapper {
+
     @Mappings({
             @Mapping(source = "id.idProducto", target = "productId"),
             @Mapping(source = "cantidad", target = "quantity"),
-            //@Mapping(source = "total", target = "total"), Dado que el source y el target tienen el mismo nombre no es necesario hacerlo dado que se hara automatico
             @Mapping(source = "estado", target = "active")
     })
     PurchaseItem toPurchaseItem(ComprasProducto producto);

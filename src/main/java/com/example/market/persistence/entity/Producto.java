@@ -1,13 +1,6 @@
 package com.example.market.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Column;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "productos")
@@ -40,10 +33,6 @@ public class Producto {
 
     public Integer getIdProducto() {
         return idProducto;
-    }
-
-    public void setIdProducto(Integer idProducto) {
-        this.idProducto = idProducto;
     }
 
     public String getNombre() {

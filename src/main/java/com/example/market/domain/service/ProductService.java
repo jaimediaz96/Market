@@ -31,15 +31,11 @@ public class ProductService {
     }
 
     public boolean delete(int productId) {
-        /*try {
+        try {
             productRepository.delete(productId);
             return true;
         } catch (EmptyResultDataAccessException e) {
             return false;
-        }*/
-        return getProduct(productId).map(product -> {
-                productRepository.delete(productId);
-                return true;
-        }).orElse(false);
+        }
     }
 }

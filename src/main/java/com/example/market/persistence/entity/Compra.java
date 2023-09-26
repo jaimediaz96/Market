@@ -1,15 +1,6 @@
 package com.example.market.persistence.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,16 +14,15 @@ public class Compra {
     private Integer idCompra;
 
     @Column(name = "id_cliente")
-    private Integer idCliente;
+    private String idCliente;
 
     private LocalDateTime fecha;
 
     @Column(name = "medio_pago")
-    private String medioPago;
+    private Character medioPago;
 
     private String comentario;
-
-    private String estado;
+    private Character estado;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
@@ -45,15 +35,11 @@ public class Compra {
         return idCompra;
     }
 
-    public void setIdCompra(Integer idCompra) {
-        this.idCompra = idCompra;
-    }
-
-    public Integer getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Integer idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -65,11 +51,11 @@ public class Compra {
         this.fecha = fecha;
     }
 
-    public String getMedioPago() {
+    public Character getMedioPago() {
         return medioPago;
     }
 
-    public void setMedioPago(String medioPago) {
+    public void setMedioPago(Character medioPago) {
         this.medioPago = medioPago;
     }
 
@@ -81,11 +67,11 @@ public class Compra {
         this.comentario = comentario;
     }
 
-    public String getEstado() {
+    public Character getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Character estado) {
         this.estado = estado;
     }
 
